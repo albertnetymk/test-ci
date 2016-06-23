@@ -10,7 +10,7 @@ class GHClient
       pr.sha,
       status,
       {
-        context: 'albert-laptop',
+        context: ENV['ci_name'] || 'test-ci',
         description: 'Click Details to see output on CI',
         target_url: ENV['domain_url'] +
           Rails.application.routes.url_helpers.pr_show_path(pr.pr_id)
