@@ -12,12 +12,12 @@ domain_url=... # your domain or just IP
 ### Routes
 
 ```
-POST /pr # webhoos for pull request
-POST /:owner/:repo # build all open PRs
-POST /:owner/:repo/:id # build a specific PR
+POST /pr # webhooks for pull request
+POST /build/:owner/:repo # build all open PRs
+POST /build/:owner/:repo/:id # build a specific PR
 ```
 
-So, `curl -d '' domain_url/:owner/:repo` would build all open PRs for that repo.
+So, `curl -d '' domain_url/build/:owner/:repo` would build all open PRs for that repo.
 
 ### Deployment
 
