@@ -1,7 +1,7 @@
 class GHClient
   def self.client
-    # @@client ||= Octokit::Client.new(access_token: ENV['octo_token'])
-    Octokit::Client.new(access_token: ENV['octo_token'])
+    @@client ||= Octokit::Client.new(access_token: ENV['octo_token'])
+    # Octokit::Client.new(access_token: ENV['octo_token'])
   end
 
   def self.create_status(pr, status)
