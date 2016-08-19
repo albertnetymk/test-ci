@@ -21,7 +21,9 @@ class BuildPrJob < ActiveJob::Base
       cd #{repo_name}
       git rebase --abort || true
       git reset --hard ; git clean -d -f
-      git checkout #{base_branch}
+      git checkout origin/HEAD
+      git branch -D #{base_branch} || true
+      git checkout -b #{base_branch} origin/HEAD
       git pull
       git checkout origin/HEAD
       git branch -D #{branch} || true
