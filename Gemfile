@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem "octokit", "~> 4.0"
-gem "open4"
+gem "systemu"
 gem "sidekiq"
 gem "rerun"
 gem "dotenv-rails"

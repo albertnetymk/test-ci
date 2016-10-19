@@ -34,12 +34,9 @@ class BuildPrJob < ActiveJob::Base
       ) 2>&1
     EOF
     Dir.chdir(File.join(Rails.root, 'tmp')) do
-      pid, stdin, stdout, stderr = Open4::popen4 "sh"
-      stdin.puts cmd
-      stdin.close
-      ignored, status = Process::waitpid2 pid
+      status, stdout, stderr = systemu cmd
       puts "============= #{ssh_url} #{branch} exitstatus: #{status.exitstatus}"
-      pr.details = stdout.read
+      pr.details = stdout
       return status.exitstatus
     end
   end
