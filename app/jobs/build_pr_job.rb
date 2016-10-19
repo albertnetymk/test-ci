@@ -36,7 +36,7 @@ class BuildPrJob < ActiveJob::Base
     Dir.chdir(File.join(Rails.root, 'tmp')) do
       status, stdout, stderr = systemu cmd
       puts "============= #{ssh_url} #{branch} exitstatus: #{status.exitstatus}"
-      pr.details = stdout
+      pr.details = stdout.force_encoding 'UTF-8'
       return status.exitstatus
     end
   end
