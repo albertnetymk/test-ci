@@ -22,7 +22,7 @@ class BuildPrJob < ActiveJob::Base
       git rebase --abort || true
       git reset --hard ; git clean -d -f
       git checkout origin/HEAD
-      git branch -D #{base_branch} || true
+      git branch | grep -v 'HEAD' | xargs git branch -D || true
       git checkout -b #{base_branch} origin/HEAD
       git pull
       git checkout origin/HEAD
